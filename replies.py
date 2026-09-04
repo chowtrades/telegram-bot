@@ -10,9 +10,10 @@ else in this file needs to change for basic customization.
 PROJECT_NAME = "$CHOW"
 
 WELCOME_TEXT = (
-    "👋 Welcome to the {project} community, {name}!\n\n"
-    "Glad to have you here. Check out /rules for the group rules "
-    "and /about to learn more about {project}."
+    "🐕🌎 Welcome to the {project} community, {name}!\n"
+    "Trade • Travel • Give Back — glad you're here.\n\n"
+    "Check out /rules for the group rules and /about to learn what "
+    "{project} is all about."
 )
 
 SCAM_WARNING_TEXT = (
@@ -33,7 +34,9 @@ RULES_TEXT = (
 
 ABOUT_TEXT = (
     f"🐕 *About {PROJECT_NAME}*\n"
-    "EDIT-ME — a short description of the project goes here."
+    f"{PROJECT_NAME} is a Solana community built around trade, travel, "
+    "and giving back — not just another token. Weekly giveaways, real "
+    "community content, and a brand you can actually belong to. 🌎"
 )
 # ────────────────────────────────────────────────────────────────────
 
