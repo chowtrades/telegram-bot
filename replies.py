@@ -11,16 +11,15 @@ PROJECT_NAME = "$CHOW"
 
 WELCOME_TEXT = (
     "👋 Welcome to the {project} community, {name}!\n\n"
-    "Glad to have you here. Check out /rules for the group rules, "
-    "/links for our official links, and /about to learn more about {project}."
+    "Glad to have you here. Check out /rules for the group rules "
+    "and /about to learn more about {project}."
 )
 
 SCAM_WARNING_TEXT = (
     "⚠️ *Stay safe:*\n"
     "• Admins will *never* DM you first.\n"
     "• We will *never* ask for your seed phrase or private keys.\n"
-    "• Beware fake support accounts and fake giveaways.\n"
-    "• Only trust links posted with /links."
+    "• Beware fake support accounts and fake giveaways."
 )
 
 RULES_TEXT = (
@@ -30,13 +29,6 @@ RULES_TEXT = (
     "3. No financial advice — DYOR.\n"
     "4. Follow admins and moderators.\n"
     "5. Violations may result in a mute or ban."
-)
-
-LINKS_TEXT = (
-    "🔗 *Official Links*\n"
-    "Website: EDIT-ME https://example.com\n"
-    "X/Twitter: EDIT-ME https://x.com/example\n"
-    "Telegram: EDIT-ME https://t.me/example"
 )
 
 ABOUT_TEXT = (
@@ -50,12 +42,10 @@ COMMANDS = {
     "/help": (
         "Here's what I understand:\n"
         "/rules - group rules\n"
-        "/links - official links\n"
         "/about - about the project\n"
         "/announce <text> - admins only, post an announcement"
     ),
     "/rules": RULES_TEXT,
-    "/links": LINKS_TEXT,
     "/about": ABOUT_TEXT,
 }
 
