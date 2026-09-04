@@ -4,7 +4,7 @@ using webhook mode.
 
 Features:
   - Auto-welcome + scam warning for new members
-  - /rules, /links, /about, /help, /start commands (edit text in replies.py)
+  - /rules, /about, /help, /start commands (edit text in replies.py)
   - /announce <text> — admin-only, checked live against Telegram's actual
     chat admin list (no hardcoded admin IDs)
   - Basic anti-spam: flood control (mutes fast posters) and a short grace
