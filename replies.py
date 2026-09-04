@@ -1,47 +1,84 @@
 """
-All bot reply logic lives here. Edit COMMANDS and KEYWORDS to customize
-what your bot says — no need to touch app.py.
+All bot text content and simple command/keyword replies live here.
+
+Everything in the CONFIG section below is a placeholder — replace it with
+your project's real info before the bot goes live in your group. Nothing
+else in this file needs to change for basic customization.
 """
 
-# Exact-match commands, e.g. "/start", "/help"
+# ─── CONFIG: edit this section with your real project info ────────────
+PROJECT_NAME = "$CHOW"
+
+WELCOME_TEXT = (
+    "👋 Welcome to the {project} community, {name}!\n\n"
+    "Glad to have you here. Check out /rules for the group rules, "
+    "/links for our official links, and /about to learn more about {project}."
+)
+
+SCAM_WARNING_TEXT = (
+    "⚠️ *Stay safe:*\n"
+    "• Admins will *never* DM you first.\n"
+    "• We will *never* ask for your seed phrase or private keys.\n"
+    "• Beware fake support accounts and fake giveaways.\n"
+    "• Only trust links posted with /links."
+)
+
+RULES_TEXT = (
+    "📜 *Group Rules*\n"
+    "1. Be respectful — no harassment, hate speech, or spam.\n"
+    "2. No unsolicited DMs or promoting other projects.\n"
+    "3. No financial advice — DYOR.\n"
+    "4. Follow admins and moderators.\n"
+    "5. Violations may result in a mute or ban."
+)
+
+LINKS_TEXT = (
+    "🔗 *Official Links*\n"
+    "Website: EDIT-ME https://example.com\n"
+    "X/Twitter: EDIT-ME https://x.com/example\n"
+    "Telegram: EDIT-ME https://t.me/example"
+)
+
+ABOUT_TEXT = (
+    f"🐕 *About {PROJECT_NAME}*\n"
+    "EDIT-ME — a short description of the project goes here."
+)
+# ────────────────────────────────────────────────────────────────────
+
 COMMANDS = {
-    "/start": (
-        "👋 Hi! I'm your bot, up and running on Render.\n\n"
-        "Type /help to see what I can do."
-    ),
+    "/start": f"👋 Hi! I'm the {PROJECT_NAME} bot. Type /help to see what I can do.",
     "/help": (
         "Here's what I understand:\n"
-        "/start - say hello\n"
-        "/help - show this message\n"
-        "/about - who I am\n\n"
-        "I'll also reply to a few keywords — try saying \"hello\" or \"thanks\"."
+        "/rules - group rules\n"
+        "/links - official links\n"
+        "/about - about the project\n"
+        "/announce <text> - admins only, post an announcement"
     ),
-    "/about": (
-        "I'm a simple command/reply Telegram bot, running on Render "
-        "and built with Python + Flask."
-    ),
+    "/rules": RULES_TEXT,
+    "/links": LINKS_TEXT,
+    "/about": ABOUT_TEXT,
 }
 
-# Case-insensitive substring matches, checked if no exact command matched.
-# Order matters — first match wins.
+# Case-insensitive substring matches — optional flavor, checked only if no
+# command matched. Order matters — first match wins.
 KEYWORDS = [
-    (("hello", "hi", "hey"), "Hey there! 👋"),
-    (("thanks", "thank you"), "You're welcome! 🙌"),
-    (("bye", "goodbye"), "See you later!"),
+    (("gm", "good morning"), "GM! ☀️"),
 ]
 
 
 def get_reply(text: str) -> str | None:
     """Return a reply for the given incoming message text, or None to stay silent."""
     stripped = text.strip()
+    command = stripped.split()[0].split("@")[0] if stripped else ""
 
-    if stripped in COMMANDS:
-        return COMMANDS[stripped]
+    if command in COMMANDS:
+        return COMMANDS[command]
 
     lowered = stripped.lower()
     for triggers, reply in KEYWORDS:
         if any(trigger in lowered for trigger in triggers):
             return reply
 
-    # Fallback for anything else.
-    return "Sorry, I didn't understand that. Type /help to see what I can do."
+    # Stay quiet on everything else — this is a group chat, not a 1:1 bot,
+    # so we don't want to reply to every random message.
+    return None
